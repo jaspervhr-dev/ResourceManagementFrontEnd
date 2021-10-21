@@ -11,8 +11,7 @@ export class ResourceComponent implements OnInit{
 
   resourceList: any;
 
-  constructor(private http: HttpService) {
-  }
+  constructor(private http: HttpService) {}
 
   ngOnInit() {
     //Subscribes to (fetchResources) Subject in http services
@@ -22,9 +21,9 @@ export class ResourceComponent implements OnInit{
       this.http.getRequestNoParams('http://localhost:8080/resources/all')
         .subscribe((response) => {
             console.log('Response Received');
-            console.log(response);
             this.resourceList = response;
-            console.log(this.resourceList);
+            //sessionStorage.setItem("resources",response);
+            //console.log(this.resourceList);
           },
           (error) => {
             console.log(error);
@@ -36,6 +35,8 @@ export class ResourceComponent implements OnInit{
     });
   }
 
-
+  resources(){
+    console.log(this.resourceList);
+  }
 
 }

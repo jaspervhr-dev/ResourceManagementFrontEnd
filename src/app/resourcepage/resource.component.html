@@ -1,12 +1,16 @@
 <h1>Resources</h1>
 <table>
   <thead>
-  <th>Resource Name</th>
-  <th>ID</th>
+    <tr>
+      <th>Resource Name</th>
+      <th>ID</th>
+    </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let resource of resourceList">
-    <td>{{resource.resourceName}}</td>
-  </tr>
+    <tr *ngFor="let resource of resourceList">
+      <td>{{resource | async}}</td>
+      <td>{{resource | async}}</td>
+    </tr>
   </tbody>
 </table>
+<button (click)="resources()">Check</button>

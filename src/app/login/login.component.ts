@@ -16,7 +16,7 @@ export class LoginComponent {
               private http: HttpService) {
 
     this.form = this.fb.group({
-      email: ['',Validators.required],
+      username: ['',Validators.required],
       password: ['',Validators.required]
     });
   }
@@ -24,8 +24,8 @@ export class LoginComponent {
   login() {
     const val = this.form.value;
 
-    if (val.email && val.password) {
-      this.jwtService.login(val.email, val.password)
+    if (val.username && val.password) {
+      this.jwtService.login(val.username, val.password)
         .subscribe((response) => {
             console.log('Response Received');
             //console.log(response);

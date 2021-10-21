@@ -13,10 +13,7 @@ export class HttpService {
   }
 
   loadResources(){
+    console.log("...");
     this.fetchResources.next();
   }
-
-
-
-
 }
