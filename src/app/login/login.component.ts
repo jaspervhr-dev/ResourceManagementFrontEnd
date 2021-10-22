@@ -30,7 +30,6 @@ export class LoginComponent {
             console.log('Response Received');
             //console.log(response);
             this.jwtService.setSession(response);
-            this.http.loadResources();
           },
           (error) => {
             console.log(error);

@@ -1,0 +1,21 @@
+<table style="float: left">
+  <caption>Project Resources</caption>
+  <thead>
+  <tr>
+    <th>Resource Name</th>
+    <th>ID</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let resource of resourceList">
+    <td>{{resource.resourceName}}</td>
+    <td>{{resource.resourceId | json}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<label for="projects">Select a Project</label>
+<select name="projects" id="projects" [(ngModel)]="selectedProjectId">
+  <option *ngFor="let project of projectList" [ngValue]="project">{{project.projectId | json}}</option>
+</select>
+

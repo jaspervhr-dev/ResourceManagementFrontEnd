@@ -8,8 +8,10 @@ import {Router} from "@angular/router";
 export class JwtService {
 
   constructor(private http: HttpClient, private router: Router) {}
+  public username = "";
 
   login(username:string, password:string): Observable<any> {
+    this.username = username;
     const bodyJSON = {"username": username, "password": password};
     const body = JSON.stringify(bodyJSON);
     const headers = new HttpHeaders()

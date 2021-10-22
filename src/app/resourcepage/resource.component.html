@@ -4,13 +4,18 @@
     <tr>
       <th>Resource Name</th>
       <th>ID</th>
+      <th *ngFor="let col of extraColumnData">{{col.columnName}}</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let resource of resourceList">
-      <td>{{resource | async}}</td>
-      <td>{{resource | async}}</td>
+      <td>{{resource.resourceName}}</td>
+      <td>{{resource.resourceId | json}}</td>
     </tr>
   </tbody>
 </table>
-<button (click)="resources()">Check</button>
+<button (click)="addResource()">Add Resource</button>
+<button (click)="addColumn()">Add Columns</button>
+<button [routerLink]="['/login','login']">Log Out</button>
+<button [routerLink]="['/project','projects']">Project Page [temp]</button>
+

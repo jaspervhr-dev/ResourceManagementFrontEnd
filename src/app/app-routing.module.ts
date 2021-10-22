@@ -11,6 +11,14 @@ const routes: Routes = [
      loadChildren: () => import('./resourcepage/resource.module').then(m => m.ResourceModule)
   },
   {
+    path: 'signup',
+    loadChildren: () => import('./signup/signup.module').then(m => m.SignUpModule)
+  },
+  {
+    path: 'project',
+    loadChildren: () => import('./projectpage/project.module').then(m => m.ProjectModule)
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full'

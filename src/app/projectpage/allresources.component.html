@@ -1,0 +1,21 @@
+<h1>Project Page</h1>
+
+<table style="float: left">
+  <caption>All Resources</caption>
+  <thead>
+  <tr>
+    <th>Resource Name</th>
+    <th>ID</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let resource of resourceList">
+    <td>{{resource.resourceName}}</td>
+    <td>{{resource.resourceId | json}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<projectresources></projectresources>
+
+<button style="align-content: end" (click)="addResourcesToProject()">Add Resources to Project</button>

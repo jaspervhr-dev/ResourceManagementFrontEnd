@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable, Subject} from 'rxjs';
 
 @Injectable()
@@ -9,11 +9,31 @@ export class HttpService {
   public fetchResources = new Subject();
 
   getRequestNoParams(path:string): Observable<any>{
-    return this.http.get(path);
+    return this.http.get(path, {responseType: 'json'});
   }
 
   loadResources(){
-    console.log("...");
     this.fetchResources.next();
   }
+
+  postRequestOneParam(path:string, paramKey: string, paramVal: any): Observable<any>{
+    const params = new HttpParams()
+      .set(paramKey, paramVal);
+    return this.http.post(path,'',{params, responseType: 'text'});
+  }
+
+  getRequestOneParam(path:string, paramKey: string, paramVal: any): Observable<any>{
+    const params = new HttpParams()
+      .set(paramKey, paramVal);
+    return this.http.get(path,{params, responseType: 'json'});
+  }
+
+  postRequestWithTwoParams(path:string, pKey1:string, pVal1:string, pKey2:string, pVal2:string){
+  const params = new HttpParams()
+    .set(pKey1, pVal1)
+    .set(pKey2, pVal2);
+
+    return this.http.post(path, '', {params, responseType: 'json'});
+  }
+
 }
