@@ -23,6 +23,10 @@ const routes: Routes = [
     loadChildren: () => import('./formulapage/formula.module').then(m => m.FormulaModule)
   },
   {
+    path: 'template',
+    loadChildren: () => import('./templatepage/template.module').then(m => m.TemplateModule)
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full'

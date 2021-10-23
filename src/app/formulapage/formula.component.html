@@ -1,3 +1,20 @@
 <h1>Formula Page</h1>
 <div>{{projectId}}</div>
+<table>
+  <thead>
+  <tr>
+    <th>Resource Name</th>
+    <th>ID</th>
+    <th *ngFor="let col of columnData">{{col.columnName}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let resource of resourceList">
+    <td>{{resource.resourceName}}</td>
+    <td>{{resource.resourceId | json}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<button [routerLink]="['/template','template']">Edit</button>
 
