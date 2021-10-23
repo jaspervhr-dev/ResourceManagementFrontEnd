@@ -28,12 +28,33 @@ export class HttpService {
     return this.http.get(path,{params, responseType: 'json'});
   }
 
-  postRequestWithTwoParams(path:string, pKey1:string, pVal1:string, pKey2:string, pVal2:string){
+  postRequestWithTwoParams(path:string, pKey1:string, pVal1:any, pKey2:string, pVal2:any){
   const params = new HttpParams()
     .set(pKey1, pVal1)
     .set(pKey2, pVal2);
 
     return this.http.post(path, '', {params, responseType: 'json'});
+  }
+
+  postRequestWithTwoParamsText(path:string, pKey1:string, pVal1:any, pKey2:string, pVal2:any){
+    const params = new HttpParams()
+      .set(pKey1, pVal1)
+      .set(pKey2, pVal2);
+    return this.http.post(path, '', {params, responseType: 'text'});
+  }
+
+  deleteRequestWithTwoParams(path:string, pKey1:string, pVal1:any, pKey2:string, pVal2:any){
+    const params = new HttpParams()
+      .set(pKey1, pVal1)
+      .set(pKey2, pVal2);
+
+    return this.http.delete(path,{params, responseType: 'text'});
+  }
+
+  deleteRequestWithOneParam(path:string, pKey1:string, pVal1:any){
+    const params = new HttpParams()
+      .set(pKey1, pVal1);
+    return this.http.delete(path,{params, responseType: 'text'});
   }
 
 }

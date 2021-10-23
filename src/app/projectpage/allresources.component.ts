@@ -24,12 +24,6 @@ export class AllResourcesComponent implements OnInit {
     this.http.loadResources();
   }
 
-  addResourcesToProject(){
-    var projectId = prompt("Enter the project Id: ");
-    var resIds = prompt("Enter a list of resource Ids: ");
-    console.log(resIds);
-  }
-
   loadAllResources() {
     this.http.getRequestNoParams('http://localhost:8080/resources/all')
       .subscribe((response) => {

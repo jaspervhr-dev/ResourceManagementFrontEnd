@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {JwtService} from "./services/jwt.service";
 import {AuthInterceptor} from "./services/httpinterceptor.service";
 import {HttpService} from "./services/http.service";
+import {DataService} from "./services/data.service";
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import {HttpService} from "./services/http.service";
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [ JwtService, HttpService,
+  providers: [ JwtService, HttpService, DataService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
   bootstrap: [AppComponent]
 })
