@@ -1,1 +1,19 @@
 <h1>Template Page</h1>
+<table>
+  <caption>Custom Columns</caption>
+  <thead>
+  <tr>
+    <th>Column Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let col of columnData">
+    <td>{{col.columnName}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<button (click)="addCustomColumn()">Add a column</button>
+<button (click)="removeCustomColumn()">Delete a column</button>
+
+

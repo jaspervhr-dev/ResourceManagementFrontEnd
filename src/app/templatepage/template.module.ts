@@ -11,6 +11,6 @@ import { TemplateComponent } from "./template.component";
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [TemplateComponent]
+  declarations: [ TemplateComponent ]
 })
 export class TemplateModule { }

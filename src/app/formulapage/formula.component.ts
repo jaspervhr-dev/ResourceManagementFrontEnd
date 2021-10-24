@@ -31,10 +31,13 @@ export class FormulaComponent implements OnInit {
   getColumns(){
     this.http.getRequestOneParam('http://localhost:8080/resources/getColumn', "projectId", this.projectId)
       .subscribe((response) => {
-        console.log('Resource Response Received');
+        console.log('Column Response Received');
         this.columnData = response;
-        //console.log(this.extraColumnData);
       });
+  }
+
+  updateColumnValue(){
+
   }
 
 

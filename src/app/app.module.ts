@@ -9,11 +9,13 @@ import {JwtService} from "./services/jwt.service";
 import {AuthInterceptor} from "./services/httpinterceptor.service";
 import {HttpService} from "./services/http.service";
 import {DataService} from "./services/data.service";
+import {HeaderComponent} from "./header/header.component";
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

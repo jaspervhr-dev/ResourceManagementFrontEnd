@@ -6,7 +6,8 @@ import {Router} from "@angular/router";
 
 @Component({
   selector: 'resourcepage',
-  templateUrl: './resource.component.html'
+  templateUrl: './resource.component.html',
+  styleUrls: ['./resource.component.css']
 })
 export class ResourceComponent implements OnInit{
 
@@ -73,6 +74,14 @@ export class ResourceComponent implements OnInit{
         //console.log(this.extraColumnData);
         this.getColumns();
       });
+  }
+
+  removeResource(){
+
+  }
+
+  removeColumn(){
+
   }
 
 }
