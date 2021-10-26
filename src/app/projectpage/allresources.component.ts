@@ -5,7 +5,8 @@ import {Router} from "@angular/router";
 
 @Component({
   selector: 'allresources',
-  templateUrl: './allresources.component.html'
+  templateUrl: './allresources.component.html',
+  styleUrls: ['/projectpage.component.css']
 })
 export class AllResourcesComponent implements OnInit {
 

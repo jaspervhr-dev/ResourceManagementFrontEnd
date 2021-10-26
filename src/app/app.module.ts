@@ -10,12 +10,15 @@ import {AuthInterceptor} from "./services/httpinterceptor.service";
 import {HttpService} from "./services/http.service";
 import {DataService} from "./services/data.service";
 import {HeaderComponent} from "./header/header.component";
+import {NavigationComponent} from "./navigation/navigation.component";
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,

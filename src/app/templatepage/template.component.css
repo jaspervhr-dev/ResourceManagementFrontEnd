@@ -1,4 +1,4 @@
-body {
+body{
   font-family: 'Helvetica', 'Arial', sans-serif;
   text-align: center;
   margin-left:auto;
@@ -23,7 +23,6 @@ th{
 
 td {
   padding: 0 15px;
-  border: 1px solid black;
 }
 
 button{

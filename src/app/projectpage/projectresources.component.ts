@@ -5,7 +5,8 @@ import {DataService} from "../services/data.service";
 
 @Component({
   selector: 'projectresources',
-  templateUrl: './projectresources.component.html'
+  templateUrl: './projectresources.component.html',
+  styleUrls: ['./projectpage.component.css']
 })
 export class ProjectResourcesComponent implements OnInit {
 
@@ -55,7 +56,7 @@ export class ProjectResourcesComponent implements OnInit {
   }
 
   deleteProject(){
-    this.http.postRequestOneParam('http://localhost:8080/project/deleteproject', "projectId", this.selectedProjectId)
+    this.http.deleteRequestWithOneParam('http://localhost:8080/project/deleteproject', "projectId", this.selectedProjectId)
       .subscribe((response) => {
         console.log('Project Deleted');
         this.loadProjects();
@@ -64,6 +65,13 @@ export class ProjectResourcesComponent implements OnInit {
 
   addResourcesToProject(){
     var resIds = prompt("Enter a list of resource Ids: ");
+    // if(resIds == "all"){
+    //   resIds = "";
+    //   for(let i = 0; i < this.resourceList.length; i++){
+    //     resIds += this.resourceList[i].resourceId.toString() + ",";
+    //   }
+    //   console.log(resIds);
+    // }
     this.http.postRequestWithTwoParamsText('http://localhost:8080/project/addresources', 'resourceIds', resIds, 'projectId', this.selectedProjectId)
       .subscribe((response) => {
         console.log('Resources Added');

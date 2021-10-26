@@ -13,11 +13,10 @@
     </div>
   </fieldset>
   <div class="form-buttons">
-    <button class="button button-primary"
-            (click)="login()">Login</button>
+    <button  class="button button-primary" (click)="login()">Login</button>
+    <button style="float:end" [routerLink]="['/signup','signup']">Sign Up</button>
   </div>
 </form>
 
-<button [routerLink]="['/signup','signup']">Sign Up</button>
 </body>
 

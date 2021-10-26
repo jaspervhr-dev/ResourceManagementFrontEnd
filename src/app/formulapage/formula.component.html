@@ -1,20 +1,22 @@
-<h1>Formula Page</h1>
-<div>{{projectId}}</div>
-<table>
-  <thead>
-  <tr>
-    <th>Resource Name</th>
-    <th>ID</th>
-    <th *ngFor="let col of columnData">{{col.columnName}}</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let resource of resourceList">
-    <td>{{resource.resourceName}}</td>
-    <td>{{resource.resourceId | json}}</td>
-  </tr>
-  </tbody>
-</table>
+<body>
+  <h1 style="font-style: italic; font-family: 'Times New Roman';">FORMULA PAGE (Project #{{projectId}})</h1>
+  <table>
+    <thead>
+    <tr>
+      <th>Resource Name</th>
+      <th>ID</th>
+      <th *ngFor="let col of columnData">{{col.columnName}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let resource of resourceList; index as resIndex">
+      <td>{{resource.resourceName}}</td>
+      <td>{{resource.resourceId | json}}</td>
+      <td *ngFor="let colName of columnData; index as colIndex;" (click)="updateColumnValue(resource.resourceId, colIndex)">{{columnValues[resIndex][colIndex]}}</td>
+    </tr>
+    </tbody>
+  </table>
 
-<button [routerLink]="['/template','templatepage']">Edit</button>
+  <button [routerLink]="['/template','templatepage']">Edit</button>
+</body>
 

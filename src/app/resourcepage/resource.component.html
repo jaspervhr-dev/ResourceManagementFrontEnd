@@ -1,6 +1,6 @@
 <body>
-  <h1>Resources</h1>
-  <table>
+    <h1 style="text-align: left; margin-left: 510px; font-style: italic; font-family: 'Times New Roman'">RESOURCES</h1>
+  <table style="float: left; margin-left: 200px" >
     <thead>
       <tr>
         <th>Resource Name</th>
@@ -9,15 +9,24 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let resource of resourceList">
+      <tr *ngFor="let resource of resourceList; index as resIndex">
         <td>{{resource.resourceName}}</td>
         <td>{{resource.resourceId | json}}</td>
+        <td *ngFor="let colName of extraColumnData; index as colIndex;" (click)="updateColumnValue(resource.resourceId, colIndex)">{{columnValues[resIndex][colIndex]}}</td>
       </tr>
     </tbody>
   </table>
+<div style="float: left; margin-left: 30px">
+
   <button (click)="addResource()">Add Resource</button>
-  <button (click)="addColumn()">Add Columns</button>
+  <br>
+  <button (click)="removeResource()">Remove Resource</button>
+  <br>
+  <button (click)="addColumn()">Add Column</button>
+  <br>
+  <button (click)="removeColumn()">Remove Column</button>
+  <br>
   <button [routerLink]="['/login','login']">Log Out</button>
-  <button [routerLink]="['/project','projects']">Project Page [temp]</button>
+</div>
 </body>
 

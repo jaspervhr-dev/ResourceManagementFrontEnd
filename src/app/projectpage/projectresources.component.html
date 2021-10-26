@@ -1,4 +1,4 @@
-<table style="float: left">
+<table style="float: left; text-align: left; margin-left: 50px">
   <caption>Project Resources</caption>
   <thead>
   <tr>
@@ -13,15 +13,19 @@
   </tr>
   </tbody>
 </table>
-<div style="display: flex; align-items: center;">
+
+<div style="float: left; text-align: center; margin-left: 50px">
   <label for="projects">Select a Project: </label>
   <select name="projects" id="projects" [(ngModel)]="selectedProjectId">
     <option *ngFor="let project of projectList" [ngValue]="project.projectId">{{project.projectId | json}}</option>
   </select>
 
+  <br>
   <button (click)="createProject()">Create Project</button>
   <button (click)="deleteProject()">Delete Project</button>
+  <br>
   <button (click)="addResourcesToProject()">Add Resources</button>
   <button (click)="removeResourcesFromProject()">Remove Resources</button>
+  <br>
   <button (click)="tranferProjectId()" [routerLink]="['/formula','formula']">Go To Formula Page</button>
 </div>

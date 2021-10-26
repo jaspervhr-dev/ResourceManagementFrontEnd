@@ -4,7 +4,8 @@ import {DataService} from "../services/data.service";
 
 @Component({
   selector: 'temp',
-  templateUrl: './template.component.html'
+  templateUrl: './template.component.html',
+  styleUrls: ['./template.component.css']
 })
 export class TemplateComponent implements OnInit {
 
@@ -29,7 +30,7 @@ export class TemplateComponent implements OnInit {
   }
 
   addCustomColumn(){
-    this.newColumnName = prompt("Enter the column name: ")
+    this.newColumnName = prompt("Enter the column name: ");
     this.http.postRequestWithTwoParams('http://localhost:8080/resources/addColumn', "columnName", this.newColumnName, "projectId", this.projectId)
       .subscribe((response) => {
         console.log('Column created');
@@ -39,13 +40,12 @@ export class TemplateComponent implements OnInit {
   }
 
   removeCustomColumn(){
-    this.http.deleteRequestWithTwoParams('http://localhost:8080/resources/deleteColumn', "columnName", this.newColumnName, "projectId", this.projectId)
+    var columnName = prompt("Enter the column name: ");
+    this.http.deleteRequestWithTwoParams('http://localhost:8080/resources/deleteColumn', "columnName", columnName, "projectId", this.projectId)
       .subscribe((response) => {
         console.log('Column removed');
-        this.columnData.push(response);
+        this.loadColumns();
         //console.log(this.extraColumnData);
       });
   }
-
-  //TODO Find a way to flag columns so that they aren't shown in the formula page
 }

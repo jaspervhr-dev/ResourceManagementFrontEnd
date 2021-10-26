@@ -12,7 +12,8 @@ import {Router} from "@angular/router";
 export class ResourceComponent implements OnInit{
 
   resourceList: any[] = [];
-  extraColumnData: any[] = []
+  extraColumnData: any[] = [];
+  columnValues: any[] = [];
 
   constructor(private http: HttpService) {  }
 
@@ -42,6 +43,7 @@ export class ResourceComponent implements OnInit{
         console.log('Resource Response Received');
         this.extraColumnData = response;
         //console.log(this.extraColumnData);
+        this.fillColumnData();
       });
   }
 
@@ -76,12 +78,76 @@ export class ResourceComponent implements OnInit{
       });
   }
 
-  removeResource(){
-
+  removeResource() {
+    var resId = prompt("Enter the ID of the resource you'd like to delete: ");
+    this.http.deleteOneParam('http://localhost:8080/resources/deleteresource', 'resourceId', resId)
+      .subscribe((response) => {
+          console.log('Resource Deleted');
+          console.log(response);
+          this.loadAllResources();
+      });
   }
 
-  removeColumn(){
 
+  removeColumn(){
+    var colName = prompt("Enter the name of the column you'd like to delete: ");
+    this.http.deleteRequestWithTwoParams('http://localhost:8080/resources/deleteColumn', 'columnName', colName, "projectId", 1)
+      .subscribe((response) => {
+        console.log('Resource Deleted');
+        console.log(response);
+        this.getColumns();
+      });
+  }
+
+  fillColumnData(){
+    let resVals = [];
+    for(let i = 0; i < this.resourceList.length; i++){
+      let colVal: string[] = [];
+      for(let c = 0; c < this.extraColumnData.length; c++){
+        this.http.getRequestThreeParams('http://localhost:8080/resources/columnValue', "resourceId", this.resourceList[i].resourceId,"projectId", 1, "columnName", this.extraColumnData[c].columnName)
+          .then((response) => {
+              console.log('Column Data Loaded');
+              console.log(this.extraColumnData[c].columnName, response);
+              colVal.push(response);
+            },
+            ()=>{
+              console.log("Column does not have a value");
+              colVal.push("");
+            });
+      }
+      resVals.push(colVal);
+    }
+    this.columnValues = resVals;
+    console.log(this.columnValues);
+  }
+
+  updateColumnValue(resourceId: any, columnIndex: any){
+    var newVal = prompt("Enter the new value: ");
+
+    //Get the index of the resource
+    var resourceIndex = 0;
+    for(let i = 0; i < this.resourceList.length; i++){
+      if(this.resourceList[i].resourceId == resourceId){
+        resourceIndex = i;
+      }
+    }
+    var columnName = this.extraColumnData[columnIndex].columnName;
+    if(this.columnValues[resourceIndex][columnIndex] != ""){
+      this.modifyValue(newVal, columnName, resourceId);
+    }
+    this.http.postRequestFourParams('http://localhost:8080/resources/addColumnValue', "columnValue", newVal,"columnName",columnName,"resourceId", resourceId,"projectId", 1)
+      .subscribe((response) => {
+        console.log('Column Val Received');
+        this.fillColumnData();
+      });
+  }
+
+  modifyValue(colVal: any, colName: string, resourceId: any){
+    this.http.postRequestFourParams('http://localhost:8080/resources/updateColumnValue', "columnValue", colVal,"columnName",colName,"resourceId", resourceId,"projectId", 1)
+      .subscribe((response) => {
+        console.log('Column Val Updated');
+        this.fillColumnData();
+      });
   }
 
 }

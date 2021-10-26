@@ -1,4 +1,4 @@
-body {
+body{
   font-family: 'Helvetica', 'Arial', sans-serif;
   text-align: center;
   margin-left:auto;
@@ -34,4 +34,8 @@ button{
   text-align: center;
   text-decoration: none;
   font-size: 18px;
+}
+
+select{
+  background-color: coral;
 }

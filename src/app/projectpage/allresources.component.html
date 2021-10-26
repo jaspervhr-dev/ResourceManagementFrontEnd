@@ -1,19 +1,21 @@
-<h1>Project Page</h1>
+<body>
+    <h1 style="text-align: left; margin-left: 500px; font-style: italic; font-family: 'Times New Roman'">PROJECT PAGE</h1>
 
-<table style="float: left">
-  <caption>All Resources</caption>
-  <thead>
-  <tr>
-    <th>Resource Name</th>
-    <th>ID</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let resource of resourceList">
-    <td>{{resource.resourceName}}</td>
-    <td>{{resource.resourceId | json}}</td>
-  </tr>
-  </tbody>
-</table>
+  <table style="float: left; text-align: left; margin-left: 150px">
+    <caption>All Resources</caption>
+    <thead>
+    <tr>
+      <th>Resource Name</th>
+      <th>ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let resource of resourceList">
+      <td>{{resource.resourceName}}</td>
+      <td>{{resource.resourceId | json}}</td>
+    </tr>
+    </tbody>
+  </table>
 
-<projectresources></projectresources>
+  <projectresources></projectresources>
+</body>

@@ -20,6 +20,9 @@ export class LoginComponent {
       username: ['',Validators.required],
       password: ['',Validators.required]
     });
+
+    // @ts-ignore
+    document.getElementById('sidebar').hidden = true;
   }
 
   login() {
@@ -31,6 +34,8 @@ export class LoginComponent {
             console.log('Response Received');
             //console.log(response);
             this.jwtService.setSession(response);
+            // @ts-ignore
+            document.getElementById('sidebar').hidden = false;
           },
           (error) => {
             console.log(error);
